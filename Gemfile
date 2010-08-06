@@ -32,6 +32,8 @@ gem 'utility_belt'
 gem 'mongo_mapper'
 gem 'bson_ext'
 gem 'mongo_ext'
+gem 'formtastic', :git => "http://github.com/justinfrench/formtastic.git", :branch => "rails3"
+
 group :test do
   gem 'webrat'
   gem 'rspec',       '2.0.0.beta.19'
