@@ -5,7 +5,6 @@ gem 'rails', '3.0.0.rc'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -29,6 +28,10 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 #   gem 'webrat'
 # end
 gem 'haml'
+gem 'utility_belt'
+gem 'mongo_mapper'
+gem 'bson_ext'
+gem 'mongo_ext'
 group :test do
   gem 'webrat'
   gem 'rspec',       '2.0.0.beta.19'
