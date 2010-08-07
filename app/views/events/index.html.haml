@@ -1,4 +1,7 @@
-=link_to "New Event", new_event_path
-%ul
+%h2
+  Events
+%p=link_to "New Event", new_event_path
+%ul.event_list
   - @events.each do |event|
     %li=event.name
+
