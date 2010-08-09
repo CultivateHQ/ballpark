@@ -44,6 +44,9 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     fastthread (1.0.7)
+    formtastic-rails3 (0.9.10.1)
+      actionpack (>= 3.0.0beta3)
+      activesupport (>= 3.0.0beta3)
     gem_plugin (0.2.3)
     haml (3.0.15)
     i18n (0.4.1)
@@ -120,6 +123,7 @@ PLATFORMS
 
 DEPENDENCIES
   bson_ext
+  formtastic-rails3
   haml
   mongo_ext
   mongo_mapper

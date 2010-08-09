@@ -33,6 +33,7 @@ gem 'mongo_mapper'
 gem 'bson_ext'
 gem 'mongo_ext'
 #gem 'formtastic', :git => "http://github.com/justinfrench/formtastic.git", :branch => "rails3"
+gem 'formtastic-rails3'
 
 group :development do
   gem 'mongrel'
