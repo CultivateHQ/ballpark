@@ -37,11 +37,14 @@ gem 'formtastic-rails3'
 
 group :development do
   gem 'mongrel'
+  gem 'rspec-rails', '>= 2.0.0.beta.19'
 end
 
 group :test do
   gem 'webrat'
-  gem 'rspec',       '2.0.0.beta.19'
-  gem 'rspec-rails', '2.0.0.beta.19'
+  gem 'rspec',       '>= 2.0.0.beta.19'
+  gem 'rspec-rails', '>= 2.0.0.beta.19'
+  gem 'redgreen'
 end
+
 
