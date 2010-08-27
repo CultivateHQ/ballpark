@@ -1,0 +1,15 @@
+%h1 Fixed Expenses
+- semantic_form_for @fixed_expense, :url=>event_fixed_expenses_path(@event) do |form|
+  = form.inputs do
+    = form.input :description
+    = form.input :amount, :as=>:numeric
+  = form.buttons
+%table.fixed_expenses
+  %thead
+    %th Description
+    %th Amount
+  %tbody
+    -@event.fixed_expenses.each do |expense|
+      %tr
+        %td=h(expense.description)
+        %td=number_to_currency(expense.amount, :unit=>'')

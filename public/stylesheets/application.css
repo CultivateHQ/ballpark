@@ -18,7 +18,11 @@ body {
     visibility: hidden; } }
 
 a {
-  color: #c01f25; }
+  color: #4169aa; }
+
+a:hover{
+  color:#4100aa;}
+
 
 ul.event_list {
   margin: 10px 0;

@@ -5,15 +5,15 @@ class Event
 
   many :fixed_expenses, :class_name=>'Event::Expense'
 
-  def add_fixed_expense description, amount
-    fixed_expenses << Expense.new(:description=>description, :amount=>amount)
+  def add_fixed_expense attributes
+    fixed_expenses << Expense.new(attributes)
   end
   
 
   class Expense
     include MongoMapper::EmbeddedDocument
 
-    key :amount, BigDecimal, :required=>true
+    key :amount, Float, :required=>true
     key :description, String, :required=>true
     belongs_to :event
   end

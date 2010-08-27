@@ -1,0 +1,2 @@
+module FixedExpensesHelper
+end

@@ -8,6 +8,10 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
+  def show
+    @event = Event.find(params[:id])
+  end
+
   def create
     @event = Event.new(params[:event])
     @event.save!

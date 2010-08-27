@@ -1,5 +1,9 @@
 Enigma::Application.routes.draw do
-  resources :events
+  resources :events do
+    resources :fixed_expenses
+  end
+
+  match "/" => redirect("/events")
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
