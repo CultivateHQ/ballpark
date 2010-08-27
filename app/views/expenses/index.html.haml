@@ -1,5 +1,5 @@
 %h1 Fixed Expenses
-- semantic_form_for @fixed_expense, :url=>event_fixed_expenses_path(@event) do |form|
+- semantic_form_for @expense, :url=>event_expenses_path(@event) do |form|
   = form.inputs do
     = form.input :description
     = form.input :amount, :as=>:numeric

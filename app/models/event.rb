@@ -3,19 +3,13 @@ class Event
 
   key :name, String, :required=>true
 
-  many :fixed_expenses, :class_name=>'Event::Expense'
+  many :fixed_expenses, :class_name=>'Expense' do
 
-  def add_fixed_expense attributes
-    fixed_expenses << Expense.new(attributes)
-  end
-  
-
-  class Expense
-    include MongoMapper::EmbeddedDocument
-
-    key :amount, Float, :required=>true
-    key :description, String, :required=>true
-    belongs_to :event
+    def add attributes
+      expense = Expense.new(attributes)
+      return nil unless expense.valid?
+      self << Expense.new(attributes)
+    end
   end
 end
 
