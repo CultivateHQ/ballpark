@@ -1,6 +1,7 @@
 class ExpensesController < ApplicationController
 
   before_filter :find_event_and_expense
+  helper_method :expenses_title, :expenses_path, :expenses, :expense_path, :edit_expense_path
 
   def create
     @expense = Expense.new(params[:expense])
@@ -38,6 +39,26 @@ class ExpensesController < ApplicationController
   def find_event_and_expense
     @event = Event.find(params[:event_id])
     @expense = @event.fixed_expenses.find(params[:id]) if params[:id]
+  end
+
+  def expenses_title
+    "Fixed expenses"
+  end
+
+  def expenses_path
+    event_expenses_path(@event)
+  end
+
+  def expenses
+    @event.fixed_expenses
+  end
+
+  def expense_path(expense=@expense)
+    event_expense_path(@event.id, expense.id)
+  end
+
+  def edit_expense_path(expense)
+    edit_event_expense_path(@event.id, expense.id)
   end
 
 end

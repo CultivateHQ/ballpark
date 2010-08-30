@@ -51,23 +51,23 @@ h3 {
   float: left;
 }
 
-table.fixed_expenses td{
+table.expenses td{
   border: thin solid lavender;
 }
 
-table.fixed_expenses th{
+table.expenses th{
   background-color: #f5f5f5;
 }
 
-table.fixed_expenses  td.description{ width:400px;}
-table.fixed_expenses td.amount {
+table.expenses  td.description{ width:400px;}
+table.expenses td.amount {
   width: 80px; 
   text-align: right;
   padding: 0 20px;
 }
 
 
-table.fixed_expenses tfoot td{
+table.expenses tfoot td{
   padding: 20px;
   font-weight: bold;
 }

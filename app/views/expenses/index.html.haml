@@ -1,25 +1,25 @@
-%h1 Fixed Expenses
-%h2= link_to_function "New Expense", "jQuery('#new_fixed_expense').toggle('blind')"
-#new_fixed_expense{:style=>"display:none;"}
-  = render 'form', :form_url=>event_expenses_path(@event)
+%h1= expenses_title
+%h2= link_to_function "New Expense", "jQuery('#new_expense').toggle('blind')"
+#new_expense{:style=>"display:none;"}
+  = render 'form', :form_url=>expenses_path
 %h2 Expenses
-%table.fixed_expenses
+%table.expenses
   %thead
     %th Description
     %th Amount
     %th &nbsp;
   %tfoot
     %td.description Total
-    %td.amount=@event.fixed_expenses.total
+    %td.amount=expenses.total
       
   %tbody
-    -@event.fixed_expenses.each do |expense|
+    -expenses.each do |expense|
       %tr{:class=>cycle('even', 'odd')}
         %td.description=h(expense.description)
         %td.amount=number_to_currency(expense.amount, :unit=>'')
         %td.edit
-          =link_to edit_event_expense_path(@event.id, expense.id) do
+          =link_to edit_expense_path(expense) do
             !=jquery_icon('pencil', 'Edit')
-          =link_to event_expense_path(@event.id, expense.id), :method=>:delete, :confirm=>'Delete expense?' do
+          =link_to expense_path(expense), :method=>:delete, :confirm=>'Delete expense?' do
             != jquery_icon('circle-minus', 'Delete')
 
