@@ -1,0 +1,25 @@
+%h1= expenses_title
+%h2= link_to_function "New Expense", "jQuery('#new_expense').toggle('blind')"
+#new_expense{:style=>"display:none;"}
+  = render '/shared/expenses/form', :form_url=>expenses_path
+%h2 Expenses
+%table.expenses
+  %thead
+    %th Description
+    %th Amount
+    %th &nbsp;
+  %tfoot
+    %td.description Total
+    %td.amount=expenses.total
+      
+  %tbody
+    -expenses.each do |expense|
+      %tr{:class=>cycle('even', 'odd')}
+        %td.description=h(expense.description)
+        %td.amount=number_to_currency(expense.amount, :unit=>'')
+        %td.edit
+          =link_to edit_expense_path(expense) do
+            !=jquery_icon('pencil', 'Edit')
+          =link_to expense_path(expense), :method=>:delete, :confirm=>'Delete expense?' do
+            != jquery_icon('circle-minus', 'Delete')
+
