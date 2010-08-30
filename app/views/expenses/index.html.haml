@@ -1,5 +1,5 @@
 %h1 Fixed Expenses
-- semantic_form_for @expense, :url=>event_expenses_path(@event) do |form|
+= semantic_form_for @expense, :url=>event_expenses_path(@event) do |form|
   = form.inputs do
     = form.input :description
     = form.input :amount, :as=>:numeric
@@ -13,3 +13,9 @@
       %tr
         %td=h(expense.description)
         %td=number_to_currency(expense.amount, :unit=>'')
+        %td
+          =link_to edit_event_expense_path(@event, expense) do
+            !=jquery_icon('pencil', 'Edit')
+          =link_to event_expense_path(@event, expense), :method=>:delete, :confirm=>'Delete expense?' do
+            != jquery_icon('circle-minus', 'Delete')
+

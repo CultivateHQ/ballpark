@@ -45,3 +45,8 @@ h2 {
 
 h3 {
   font-weight: bold; }
+
+.ui-state-default{
+  float: left;
+}
+
