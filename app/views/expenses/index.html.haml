@@ -1,15 +1,17 @@
 %h1 Fixed Expenses
-= render 'form', :form_url=>event_expenses_path(@event)
+%h2= link_to_function "New Expense", "jQuery('#new_fixed_expense').toggle('blind')"
+#new_fixed_expense{:style=>"display:none;"}
+  = render 'form', :form_url=>event_expenses_path(@event)
+%h2 Expenses
 %table.fixed_expenses
   %thead
     %th Description
     %th Amount
     %th &nbsp;
   %tfoot
-    %td.description
-      Total
-    %td.amount
-      338.34
+    %td.description Total
+    %td.amount=@event.fixed_expenses.total
+      
   %tbody
     -@event.fixed_expenses.each do |expense|
       %tr{:class=>cycle('even', 'odd')}

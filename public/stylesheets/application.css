@@ -2,7 +2,8 @@ body {
   font-family: verdana, sans-serif;
   width: 960px;
   background-color: white;
-  color: #333333; }
+  color: #333333; 
+  font-size: 13px}
 
 #flash.notice {
   color: green;
