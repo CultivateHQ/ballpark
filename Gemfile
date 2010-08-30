@@ -37,9 +37,11 @@ gem 'formtastic', :git => "http://github.com/justinfrench/formtastic.git", :bran
 group :development do
   gem 'mongrel'
   gem 'rspec-rails', '>= 2.0.0.beta.19'
+  gem 'ruby-debug'
 end
 
 group :test do
+  gem 'ruby-debug'
   gem 'webrat'
   gem 'rspec',       '>= 2.0.0.beta.19'
   gem 'rspec-rails', '>= 2.0.0.beta.19'

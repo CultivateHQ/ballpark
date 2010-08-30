@@ -1,21 +1,23 @@
 %h1 Fixed Expenses
-= semantic_form_for @expense, :url=>event_expenses_path(@event) do |form|
-  = form.inputs do
-    = form.input :description
-    = form.input :amount, :as=>:numeric
-  = form.buttons
+= render 'form', :form_url=>event_expenses_path(@event)
 %table.fixed_expenses
   %thead
     %th Description
     %th Amount
+    %th &nbsp;
+  %tfoot
+    %td.description
+      Total
+    %td.amount
+      338.34
   %tbody
     -@event.fixed_expenses.each do |expense|
-      %tr
-        %td=h(expense.description)
-        %td=number_to_currency(expense.amount, :unit=>'')
-        %td
-          =link_to edit_event_expense_path(@event, expense) do
+      %tr{:class=>cycle('even', 'odd')}
+        %td.description=h(expense.description)
+        %td.amount=number_to_currency(expense.amount, :unit=>'')
+        %td.edit
+          =link_to edit_event_expense_path(@event.id, expense.id) do
             !=jquery_icon('pencil', 'Edit')
-          =link_to event_expense_path(@event, expense), :method=>:delete, :confirm=>'Delete expense?' do
+          =link_to event_expense_path(@event.id, expense.id), :method=>:delete, :confirm=>'Delete expense?' do
             != jquery_icon('circle-minus', 'Delete')
 
