@@ -1,4 +1,4 @@
-class ExpensesController < ApplicationController
+class BaseExpensesController < ApplicationController
 
   before_filter :find_event_and_expense
   helper_method :expenses_title, :expenses_path, :expenses, :expense_path, :edit_expense_path

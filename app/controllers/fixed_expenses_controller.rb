@@ -1,4 +1,4 @@
-class FixedExpensesController < ExpensesController
+class FixedExpensesController < BaseExpensesController
 private
 
   def expenses_title
