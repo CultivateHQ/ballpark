@@ -3,9 +3,11 @@ class Event
 
   key :name, String, :required=>true
 
-  many :fixed_expenses, :class_name=>'Expense' do
-    def total
-      self.sum(&:amount)
+  %w(fixed delegate).each do |type|
+    many "#{type}_expenses", :class_name=>'Expense' do
+      def total
+        self.sum(&:amount)
+      end
     end
   end
 

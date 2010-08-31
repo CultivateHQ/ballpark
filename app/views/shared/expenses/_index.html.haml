@@ -1,6 +1,6 @@
-%h1= expenses_title
+%h1 #{link_to @event.name, event_path(@event)}: #{expenses_title}
 %h2= link_to_function "New Expense", "jQuery('#new_expense').toggle('blind')"
-#new_expense{:style=>"display:none;"}
+#new_expense{:style=>new_expense_style}
   = render '/shared/expenses/form', :form_url=>expenses_path
 %h2 Expenses
 %table.expenses

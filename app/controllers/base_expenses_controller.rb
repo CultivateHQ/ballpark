@@ -8,7 +8,7 @@ class BaseExpensesController < ApplicationController
     if @expense.valid?
       expenses << @expense
       @event.save!
-      redirect_to expenses_path
+      redirect_to expenses_path, :notice=>'Expense added'
     else
       render :index
     end
@@ -41,24 +41,5 @@ class BaseExpensesController < ApplicationController
     @expense = expenses.find(params[:id]) if params[:id]
   end
 
-  def expenses_title
-    "Fixed expenses"
-  end
-
-  def expenses_path
-    event_expenses_path(@event)
-  end
-
-  def expenses
-    @event.fixed_expenses
-  end
-
-  def expense_path(expense=@expense)
-    event_expense_path(@event.id, expense.id)
-  end
-
-  def edit_expense_path(expense)
-    edit_event_expense_path(@event.id, expense.id)
-  end
 
 end

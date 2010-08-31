@@ -1,6 +1,7 @@
 Enigma::Application.routes.draw do
   resources :events do
     resources :fixed_expenses
+    resources :delegate_expenses
   end
 
   match "/" => redirect("/events")
