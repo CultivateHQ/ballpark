@@ -1,5 +1,9 @@
 =div_for @event do
   .event_name= "Event #{@event.name}"
-  %ul
-    %li=link_to "Fixed expenses", event_fixed_expenses_path(@event)
-    %li=link_to "Delegate expenses", event_delegate_expenses_path(@event)
+  .expenses
+    .expense
+      =link_to "Fixed expenses", event_fixed_expenses_path(@event)
+      .amount= money(@event.fixed_expenses.total)
+    .expense
+      =link_to "Delegate expenses", event_delegate_expenses_path(@event)
+      .amount= money(@event.delegate_expenses.total)

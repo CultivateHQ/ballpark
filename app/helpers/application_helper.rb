@@ -6,4 +6,8 @@ module ApplicationHelper
   def new_expense_style
     "display:none;" unless notice.present?
   end
+
+  def money(amount)
+    number_to_currency(amount, :unit=>'&pound;')
+  end
 end
