@@ -51,12 +51,26 @@ h3 {
   float: left;
 }
 
-table.expenses td{
+table td{
   border: thin solid lavender;
 }
 
-table.expenses th{
+table th{
   background-color: #f5f5f5;
+}
+
+table.tickets td.name {width: 300px}
+table.tickets td.price, table.tickets td.capacity {
+  text-align: right;
+  padding: 0 20px;
+}
+
+table.tickets td.price{
+  width: 80px;
+}
+
+table.tickets td.capacity{
+  width: 40px;
 }
 
 table.expenses  td.description{ width:400px;}

@@ -19,7 +19,6 @@
           =link_to edit_event_ticket_path(@event.id, ticket.id) do
             !=jquery_icon('pencil', 'Edit')
           =link_to event_ticket_path(@event.id, ticket.id), :method=>:delete, :confirm=>'Delete ticket?' do
-            != jquery_icon('circle-minus', 'Delete')
-
-    
-
+            != jquery_icon('circle-minus', 'Delete') 
+:javascript
+  jQuery('#new_ticket').hide();
