@@ -37,7 +37,7 @@ class BaseExpensesController < ApplicationController
   private
 
   def find_event_and_expense
-    @event = Event.find(params[:event_id])
+    find_event
     @expense = expenses.find(params[:id]) if params[:id]
   end
 

@@ -1,0 +1,6 @@
+=semantic_form_for @ticket , :url=>form_url do |form|
+  =form.inputs do
+    = form.input :name
+    = form.input :price, :as=>:numeric
+    = form.input :capacity, :as=>:numeric
+  =form.buttons

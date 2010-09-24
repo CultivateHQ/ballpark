@@ -1,0 +1,25 @@
+%h1 #{link_to @event.name, event_path(@event)}: Tickets
+%h2= link_to_function "New Ticket", "jQuery('#new_ticket').toggle('blind')"
+#new_ticket{:style=>:new_ticket_style}
+  = render 'form', :form_url=>event_tickets_path(@event)
+%h2 Tickets
+%table.tickets
+  %thead
+    %th Name
+    %th Price
+    %th Capacity
+    %th
+  %tbody
+    -@tickets.each do |ticket|
+      %tr{:class=>cycle('even', 'odd')}
+        %td.name=ticket.name
+        %td.price=money(ticket.price)
+        %td.capacity=ticket.capacity
+        %td.edit
+          =link_to edit_event_ticket_path(@event.id, ticket.id) do
+            !=jquery_icon('pencil', 'Edit')
+          =link_to event_ticket_path(@event.id, ticket.id), :method=>:delete, :confirm=>'Delete ticket?' do
+            != jquery_icon('circle-minus', 'Delete')
+
+    
+
