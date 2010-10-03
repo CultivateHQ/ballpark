@@ -10,6 +10,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @scenario = @event.scenario_for(200)
   end
 
   def create

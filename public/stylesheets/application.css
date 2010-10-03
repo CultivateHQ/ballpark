@@ -11,18 +11,14 @@ body {
 
 .clearfix {
   zoom: 1;
-  &:after {
+}
+.clearfix:after {
     content: ".";
     display: block;
     height: 0;
     clear: both;
     visibility: hidden; } }
 
-a {
-  color: #4169aa; }
-
-a:hover{
-  color:#4100aa;}
 
 
 ul.event_list {
@@ -91,15 +87,25 @@ div.expenses .expense{
   width: 280px;
 }
 
-div.expenses .expense a, div.expenses .expense .amount{
+div.expenses .expense a, div.expenses .expense .amount, div.tickets a{
   display: block;
   padding: 20px;
 }
 
-div.expenses .expense a{
+div.expenses .expense a, div.tickets a{
   float: left;
 }
 div.expenses .expense .amount{
   text-align: right;
   float: right;
+}
+a {
+  color: #4169aa; }
+
+a:hover{
+  color:#4100aa;}
+
+#ticket_slider{
+  width: 600px;
+  margin: 20px ;
 }

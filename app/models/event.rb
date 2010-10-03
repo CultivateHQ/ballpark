@@ -13,12 +13,16 @@ class Event
 
   many :tickets
 
+  def capacity
+    tickets.sum(&:capacity)
+  end
+
   def scenario_for(sales)
     Scenario.new(self, sales)
   end
 
   class Scenario
-    attr_reader :tickets_sold, :total_income
+    attr_reader :tickets_sold, :total_income, :sales
     def initialize(event, sales)
       @tickets_sold = {}
       @sales = sales

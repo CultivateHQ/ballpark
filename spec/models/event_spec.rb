@@ -4,6 +4,17 @@ describe Event do
 
   let(:event){Event.new}
 
+
+  describe "capacity" do
+    it "should be the total ticket capacity" do
+      event.tickets << Ticket.new(:capacity=>10)
+      event.tickets << Ticket.new(:capacity=>4)
+
+      event.capacity.should == 14
+    end
+  end
+
+
   describe "fixed_expenses" do
     describe "total" do
       it "should be total of amounts" do
