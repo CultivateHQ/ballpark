@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def new_expense_style
-    "display:none;" unless notice.present?
+    "display:none;" unless notice.present? || (@expense && !@expense.errors.empty?)
   end
 
   def money(amount)

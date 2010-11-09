@@ -10,13 +10,13 @@ class EventsController < ApplicationController
 
   def show
     find_event
-    scenario_for(@event.capacity)
+    scenario_for(@event.capacity * 0.8)
   end
 
 
   def scenario
     find_event
-    scenario_for(params[:sales].to_i)
+    scenario_for(params[:sales])
     render :partial=>'scenario_result'
   end
 
@@ -33,7 +33,7 @@ private
   end
 
   def scenario_for(sales)
-    @scenario = @event.scenario_for(sales)
+    @scenario = @event.scenario_for(sales.to_i)
   end
 
 end

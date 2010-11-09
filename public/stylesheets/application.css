@@ -5,7 +5,7 @@ body {
   color: #333333; 
   font-size: 13px}
 
-#flash.notice {
+.notice {
   color: green;
   font-size: 110%; }
 
@@ -51,6 +51,10 @@ table td{
   border: thin solid lavender;
 }
 
+table td.edit{
+  width:40px;
+}
+
 table th{
   background-color: #f5f5f5;
 }
@@ -65,6 +69,7 @@ table.tickets td.price, table.tickets td.capacity {
   text-align: right;
   padding: 0 20px;
 }
+
 
 table.tickets td.price{
   width: 80px;
