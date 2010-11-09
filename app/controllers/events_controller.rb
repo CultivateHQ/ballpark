@@ -9,8 +9,15 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
-    @scenario = @event.scenario_for(200)
+    find_event
+    scenario_for(@event.capacity)
+  end
+
+
+  def scenario
+    find_event
+    scenario_for(params[:sales].to_i)
+    render :partial=>'scenario_result'
   end
 
   def create
@@ -18,4 +25,15 @@ class EventsController < ApplicationController
     @event.save!
     redirect_to :action=>:index
   end
+
+private
+
+  def find_event
+    @event = Event.find(params[:id])
+  end
+
+  def scenario_for(sales)
+    @scenario = @event.scenario_for(sales)
+  end
+
 end

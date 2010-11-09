@@ -1,17 +1,20 @@
 .sales
   %h4 Scenario for #{@scenario.sales} tickets sold
-
-%table.tickets
-  %thead
-    %th Ticket
-    %th Price
-    %th Sold
-    %th Income
-  -@event.tickets.each do |ticket|
-    %td.name=ticket.name
-    %td.price=money(ticket.price)
-    %td.sold= @scenario.tickets_sold[ticket.name]
-    %td.income=money(ticket.price *  @scenario.tickets_sold[ticket.name])
+.tickets
+  %table.tickets
+    %thead
+      %tr
+        %th Ticket
+        %th Price
+        %th Sold
+        %th Income
+    %tbody
+      -@event.tickets.each do |ticket|
+        %tr 
+          %td.name=ticket.name
+          %td.price=money(ticket.price)
+          %td.sold= @scenario.tickets_sold[ticket.name]
+          %td.income=money(ticket.price *  @scenario.tickets_sold[ticket.name])
 
 .summary
   %ul

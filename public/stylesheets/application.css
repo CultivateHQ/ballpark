@@ -55,6 +55,11 @@ table th{
   background-color: #f5f5f5;
 }
 
+
+.tickets{
+  margin: 20px;
+}
+
 table.tickets td.name {width: 300px}
 table.tickets td.price, table.tickets td.capacity {
   text-align: right;
@@ -76,6 +81,23 @@ table.expenses td.amount {
   padding: 0 20px;
 }
 
+
+.summary li{
+  margin: 20px;
+  clear: both;
+}
+
+.summary .summary_item{
+  font-weight: bold;
+  width: 100px;
+  float: left;
+}
+
+.summary .summary_amount{
+  width: 100px;
+  float:left;
+  text-align: right;
+}
 
 table.expenses tfoot td{
   padding: 20px;

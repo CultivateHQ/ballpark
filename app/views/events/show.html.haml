@@ -13,11 +13,15 @@
     %h3 Projections
     #ticket_sales
       Tickets
+      #ticket_slider_value=@scenario.sales
       #ticket_slider
-    =render 'scenario_result'
+    #scenario_result
+      =render 'scenario_result'
 
 :javascript
   jQuery('#ticket_slider').slider({
     max:#{@event.capacity},
     min:0,
-    value:#{@scenario.sales}});
+    value:#{@scenario.sales},
+    change: function(event, ui){jQuery.get('#{scenario_event_path(@event.id)}?sales=' + ui.value, function(scenario){jQuery('#scenario_result').html(scenario);});},
+    slide: function(event, ui){jQuery('#ticket_slider_value').html(ui.value);}});

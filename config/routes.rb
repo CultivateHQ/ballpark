@@ -1,5 +1,6 @@
 Enigma::Application.routes.draw do
   resources :events do
+    get :scenario, :on=>:member
     resources :fixed_expenses
     resources :delegate_expenses
     resources :tickets
