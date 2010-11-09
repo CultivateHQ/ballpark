@@ -104,23 +104,32 @@ table.expenses tfoot td{
   font-weight: bold;
 }
 
-div.expenses .expense{
-  clear: both;
-  width: 280px;
+.event_name{
+  font-weight: bolder;
+  font-size: 120%;
+  width: 100%;
+  text-align: center;
 }
 
-div.expenses .expense a, div.expenses .expense .amount, div.tickets a{
-  display: block;
+.scenario, .event_details{
+  margin: 20px;
   padding: 20px;
+  border: solid 1px;
 }
 
-div.expenses .expense a, div.tickets a{
+.event_details .detail{
+  clear: both;
+}
+
+
+.event_details .detail a, .event_details .detail .value{
   float: left;
+  display: block;
+  width: 180px;
+  padding: 5px;
 }
-div.expenses .expense .amount{
-  text-align: right;
-  float: right;
-}
+
+
 a {
   color: #4169aa; }
 

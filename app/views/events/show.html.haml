@@ -1,15 +1,16 @@
 =div_for @event do
   .event_name= "Event #{@event.name}"
-  .tickets
-    =link_to "Tickets", event_tickets_path(@event)
-  .expenses.clearfix
-    .expense
+  .event_details.clearfix
+    .detail
+      =link_to "Tickets", event_tickets_path(@event)
+      .value=@event.capacity
+    .detail
       =link_to "Fixed expenses", event_fixed_expenses_path(@event)
-      .amount= money(@event.fixed_expenses.total)
-    .expense
+      .value= money(@event.fixed_expenses.total)
+    .detail
       =link_to "Delegate expenses", event_delegate_expenses_path(@event)
-      .amount= money(@event.delegate_expenses.total)
-  .scenario
+      .value= money(@event.delegate_expenses.total)
+  .scenario.clearfix
     %h3 Projections
     #ticket_sales
       Tickets
@@ -17,6 +18,8 @@
       #ticket_slider
     #scenario_result
       =render 'scenario_result'
+=link_to "All events", events_path, :class=>'link_to_all_events'
+
 
 :javascript
   jQuery('#ticket_slider').slider({
