@@ -1,6 +1,6 @@
 %h1 #{link_to @event.name, event_path(@event)}: Tickets
 %h2= link_to_function "New Ticket", "jQuery('#new_ticket').toggle('blind')"
-#new_ticket{:style=>:new_ticket_style}
+#new_ticket{:style=>new_ticket_style}
   = render 'form', :form_url=>event_tickets_path(@event)
 %h2 Tickets
 %table.tickets
@@ -20,5 +20,3 @@
             !=jquery_icon('pencil', 'Edit')
           =link_to event_ticket_path(@event.id, ticket.id), :method=>:delete, :confirm=>'Delete ticket?' do
             != jquery_icon('circle-minus', 'Delete') 
-:javascript
-  jQuery('#new_ticket').hide();
