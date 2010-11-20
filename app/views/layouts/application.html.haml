@@ -8,7 +8,6 @@
     = stylesheet_link_tag 'application'
     = csrf_meta_tag
   %body
-    %p #{RAILS_ENV}
     #container
       - if notice.present?
         %p.notice= notice
