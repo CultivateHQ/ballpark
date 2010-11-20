@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def verify_access
     authenticate_or_request_with_http_basic("enigma") do |username, password|
-      username == "ruby" && password == "w3w01f"
+      username == "ruby" && password == "w3r3w01f"
     end
   end
 
