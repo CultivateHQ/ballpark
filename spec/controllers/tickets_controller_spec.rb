@@ -1,8 +1,10 @@
 require 'spec_helper'
 
 describe TicketsController do
+  include ControllerHelper
   before(:each) do
     @event = Event.create(:name=>'Och AYE')
+    login
   end
 
 

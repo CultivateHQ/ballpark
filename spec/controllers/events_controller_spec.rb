@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe EventsController do
-
+include ControllerHelper
   before(:each) do
     @event = Event.create(:name=>"Och Aye")
+    login
   end
 
   after(:each) do

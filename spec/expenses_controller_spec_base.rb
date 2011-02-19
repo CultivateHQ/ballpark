@@ -5,8 +5,10 @@ module ExpensesControllerSpec
   def self.included(mod)
     mod.class_eval do
 
+      include ControllerHelper
       before(:each) do
         @event = Event.create(:name=>'Och AYE')
+        login
       end
       describe "creating expense" do
         describe "successfully" do
