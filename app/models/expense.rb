@@ -1,7 +1,8 @@
 class Expense
-  include MongoMapper::EmbeddedDocument
+  include Mongoid::Document
 
-  key :amount, Float, :required=>true
-  key :description, String, :required=>true
-  belongs_to :event
+  field :amount, :type=>Float
+  field :description
+
+  validates_presence_of :amount, :description
 end

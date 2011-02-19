@@ -1,9 +1,10 @@
 class Ticket
-  include MongoMapper::EmbeddedDocument
+  include Mongoid::Document
 
-  key :price, Float, :required=>true
-  key :name, String, :required=>true
-  key :capacity, Integer, :required=>true
+  field :price, :type=>Float
+  field :name
+  field :capacity, :type=>Integer
 
-  belongs_to :event
+  validates_presence_of :name, :capacity, :price
+  embedded_in :event
 end

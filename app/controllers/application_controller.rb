@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   private
 
   def ensure_ssl_if_production_and_heroku
-    redirect_to "https://#{request.host}#{request.path_info}" if "production" == RAILS_ENV && 'https' != request.env['HTTP_X_FORWARDED_PROTO']
+    redirect_to "https://#{request.host}#{request.path_info}" if "production" == Rails.env && 'https' != request.env['HTTP_X_FORWARDED_PROTO']
   end
 
 

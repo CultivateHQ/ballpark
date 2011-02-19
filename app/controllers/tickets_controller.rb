@@ -11,7 +11,6 @@ class TicketsController < ApplicationController
     @ticket = Ticket.new(params[:ticket])
     if @ticket.valid?
       @event.tickets << @ticket
-      @event.save
       redirect_to event_tickets_path(@event.id), :notice=>'Ticket created'
     else
       render :action=>:index
@@ -19,7 +18,7 @@ class TicketsController < ApplicationController
   end
 
   def update
-    @ticket.assign params[:ticket]
+    @ticket.update_attributes params[:ticket]
     if @ticket.valid?
       @event.save
       redirect_to event_tickets_path(@event.id), :notice=>'Ticket updated'
@@ -29,16 +28,14 @@ class TicketsController < ApplicationController
   end
 
   def destroy
-    @event.tickets.delete @ticket
-    @event.save
+    @ticket.destroy
     redirect_to event_tickets_path(@event.id), :notice=>'Ticket removed'
   end
 
 private
   def find_event_and_tickets
     find_event
-    @tickets = @event.tickets
-    @ticket = @tickets.find(params[:id]) if params[:id]
+    @ticket = @event.tickets.find(params[:id]) if params[:id]
   end
 
 end

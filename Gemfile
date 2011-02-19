@@ -29,8 +29,9 @@ gem 'rails', '3.0.0'
 # end
 gem 'haml'
 gem 'utility_belt'
-gem 'mongo_mapper'
-gem 'bson_ext'
+#gem 'mongo_mapper'
+gem "mongoid", "2.0.0.rc.7"
+gem 'bson_ext', "~> 1.2"
 gem 'mongo_ext'
 gem 'formtastic', '>= 1.1.0'
 

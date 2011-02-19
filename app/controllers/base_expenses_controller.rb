@@ -4,7 +4,7 @@ class BaseExpensesController < ApplicationController
   helper_method :expenses_title, :expenses_path, :expenses, :expense_path, :edit_expense_path
 
   def create
-    @expense = Expense.new(params[:expense])
+    @expense = expense_class.new(params[:expense])
     if @expense.valid?
       expenses << @expense
       @event.save!
@@ -15,13 +15,12 @@ class BaseExpensesController < ApplicationController
   end
 
   def destroy
-    expenses.delete @expense
-    @event.save!
+    @expense.destroy
     redirect_to expenses_path
   end
 
   def update
-    @expense.assign params[:expense]
+    @expense.update_attributes params[:expense]
     if @expense.valid?
       @event.save
       redirect_to expenses_path

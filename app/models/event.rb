@@ -1,17 +1,18 @@
 class Event
-  include MongoMapper::Document
+  include Mongoid::Document
+  field :name
 
-  key :name, String, :required=>true
+  validates_presence_of :name
 
-  %w(fixed delegate).each do |type|
-    many "#{type}_expenses", :class_name=>'Expense' do
+  %w(delegate fixed).each do |type|
+    embeds_many "#{type}_expenses" do
       def total
         self.sum(&:amount)
       end
     end
   end
 
-  many :tickets
+  embeds_many :tickets
 
   def capacity
     tickets.sum(&:capacity)

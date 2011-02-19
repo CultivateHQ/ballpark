@@ -47,8 +47,8 @@ shared_examples_for "expenses controller" do
   end
   describe "operating on an expense" do
     before(:each) do
-      expenses << Expense.new(:description=>'Venue', :amount=>1200)
-      expenses << Expense.new(:description=>'Keynote expense',:amount=>500)
+      expenses.create(:description=>'Venue', :amount=>1200)
+      expenses.create(:description=>'Keynote expense',:amount=>500)
       @event.save!
       get :edit, :event_id=>@event.id.to_s, :id=>expenses.first.id.to_s
     end

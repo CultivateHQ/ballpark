@@ -20,4 +20,8 @@ private
   def edit_expense_path(expense)
     edit_event_fixed_expense_path(@event.id, expense.id)
   end
+
+  def expense_class
+    FixedExpense
+  end
 end

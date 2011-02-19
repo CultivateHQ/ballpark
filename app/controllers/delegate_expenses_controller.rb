@@ -13,6 +13,10 @@ private
     @event.delegate_expenses
   end
 
+  def expense_class
+    DelegateExpense
+  end
+
   def expense_path(expense=@expense)
     event_delegate_expense_path(@event.id, expense.id)
   end
