@@ -3,7 +3,7 @@ require 'expenses_controller_spec_base'
 
 describe DelegateExpensesController do
 
-  include ExpensesControllerSpec
+  it_should_behave_like "expenses controller"
 
   def expenses
     @event.delegate_expenses

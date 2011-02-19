@@ -2,7 +2,8 @@ require 'spec_helper'
 require 'expenses_controller_spec_base'
 
 describe FixedExpensesController do
-  include ExpensesControllerSpec
+  
+  it_should_behave_like "expenses controller"
 
   def expenses
     @event.fixed_expenses
