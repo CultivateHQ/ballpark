@@ -22,7 +22,10 @@
       %span.summary_item Total income
       %span.summary_amount=money(@scenario.total_income)
     %li
-      %span.summary_item Total cost
+      %span.summary_item Ticket costs
+      %span.summary_amount=money(@scenario.ticket_cost)
+    %li
+      %span.summary_item General costs
       %span.summary_amount=money(@scenario.total_cost)
     %li
       %span.summary_item Profit

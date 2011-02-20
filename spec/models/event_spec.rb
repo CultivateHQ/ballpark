@@ -53,9 +53,11 @@ describe Event do
 
 
     describe "profit" do
-      it "should be total income - cost" do
+      it "should be total income - cost - ticket cost" do
         event.scenario_for(0).profit.should == -150
         event.scenario_for(10).profit.should == 250
+        event.fixed_cost_per_ticket = 1
+        event.scenario_for(10).profit.should == 240
       end
     end
 
@@ -71,16 +73,15 @@ describe Event do
 
       it "takes into account fixed ticket price" do
         event.fixed_cost_per_ticket = 1;
-        event.scenario_for(6).total_income.should == 94
+        event.scenario_for(6).ticket_cost.should == 6
       end
 
       it "takes into account percent cost per ticket" do
         event.percent_cost_per_ticket = 10
-        event.scenario_for(6).total_income.should == 90
         event.scenario_for(6).ticket_cost.should == 10
-        event.scenario_for(21).total_income.should == 1530
         event.scenario_for(21).ticket_cost.should == 170
       end
+
     end
 
     describe "tickets sold" do

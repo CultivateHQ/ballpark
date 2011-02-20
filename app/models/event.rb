@@ -43,7 +43,6 @@ class Event
         tickets_unaccounted -= sold
         @tickets_sold[ticket.name] = sold
       end
-      @total_income -= @ticket_cost 
     end
  
 
@@ -52,7 +51,7 @@ class Event
     end
 
     def profit
-      total_income - total_cost
+      total_income - total_cost - ticket_cost
     end
 
 
