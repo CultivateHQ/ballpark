@@ -60,6 +60,25 @@ table th{
 }
 
 
+.sponsors{
+  margin: 20px;
+}
+
+table.sponsors td.name {width: 300px}
+table.sponsors td.price, table.sponsors td.number_of_tickets {
+  text-align: right;
+  padding: 0 20px;
+}
+
+
+table.sponsors td.price{
+  width: 80px;
+}
+
+table.sponsors td.number_of_tickets{
+  width: 40px;
+}
+
 .tickets{
   margin: 20px;
 }

@@ -4,7 +4,7 @@ class SponsorsController < ApplicationController
     @sponsor = Sponsor.new(params[:sponsor])
     if @sponsor.valid?
       @event.sponsors << @sponsor
-      redirect_to :action=>:index
+      redirect_to({:action=>:index}, :notice=>'Sponsor added')
     else
       render :action=>:index
     end
@@ -16,18 +16,22 @@ class SponsorsController < ApplicationController
 
   def destroy 
     @sponsor.destroy
-    redirect_to(:action=>:index)
+    redirect_to({:action=>:index}, :notice=>'Sponsor removed')
   end
 
   def edit
     
   end
 
+  def show
+    redirect_to :action=>:index
+  end
+
   def update
     if @sponsor.update_attributes(params[:sponsor])
-      redirect_to :action=>:index
+      redirect_to({:action=>:index}, :notice=>'Sponsor updated')
     else
-      render :action=>:index
+      render :action=>:edit
     end
   end
 

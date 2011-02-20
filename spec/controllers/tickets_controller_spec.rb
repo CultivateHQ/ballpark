@@ -10,8 +10,6 @@ describe TicketsController do
   def self.it_should_redirect_to_index
     it "should redirect to the index" do
       response.should redirect_to(:action=>:index)
-      assert assigns(:ticket)
-      assert_equal @event, assigns(:event)
     end
   end
 
@@ -90,7 +88,7 @@ describe TicketsController do
       end
 
       it "should re-render the index" do
-        response.should render_template 'index'
+        response.should render_template 'edit'
         response.should be_success
       end
 

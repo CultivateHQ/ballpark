@@ -24,8 +24,12 @@ class TicketsController < ApplicationController
       @event.save
       redirect_to event_tickets_path(@event.id), :notice=>'Ticket updated'
     else
-      render :action=>:index
+      render :action=>:edit
     end
+  end
+
+  def show
+    redirect_to_index
   end
 
   def update_ticket_cost_details
@@ -45,7 +49,6 @@ private
   end
 
   def redirect_to_index
-    @ticket||=  Ticket.new
     redirect_to :action=>:index
   end
 end

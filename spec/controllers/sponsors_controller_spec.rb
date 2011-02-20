@@ -77,8 +77,8 @@ describe SponsorsController do
         put :update, :event_id=>@event.id, :id=>@sponsor.id, :sponsor=>{:name=>''}
       end
 
-      it "renders index" do
-        response.should render_template('index')
+      it "renders edit" do
+        response.should render_template('edit')
         assert assigns(:sponsor)
         assert_equal @sponsor.id, assigns(:sponsor).id
         #assert_equal "hi", event_sponsor_path(@event.id, @sponsor.id)
