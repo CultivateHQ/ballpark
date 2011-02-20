@@ -2,10 +2,9 @@ require 'spec_helper'
 
 describe TicketsController do
   include ControllerHelper
-  before(:each) do
-    @event = Event.create(:name=>'Och AYE')
-    login
-  end
+
+  always_login
+  always_creates_event
 
 
   def self.it_should_redirect_to_index
@@ -128,6 +127,18 @@ describe TicketsController do
     it "updates the ticket cost" do
       assert_equal 0.99, @event.reload.fixed_cost_per_ticket
       assert_equal 4.1, @event.percent_cost_per_ticket
+    end
+  end
+
+  describe :edit do
+    before(:each) do
+      @ticket = @event.tickets.create(:name=>'Early worm', :capacity=>10, :price=>100)
+      get :edit, :id=>@ticket.id, :event_id=>@event.id
+    end
+
+    it "renders ok" do
+      response.should be_success
+      assert_equal @ticket, assigns(:ticket)
     end
   end
 

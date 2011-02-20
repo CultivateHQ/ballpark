@@ -2,10 +2,8 @@ require 'spec_helper'
 
 shared_examples_for "expenses controller" do
   include ControllerHelper
-  before(:each) do
-    @event = Event.create(:name=>'Och AYE')
-    login
-  end
+  always_creates_event
+  always_login
 
   describe "creating expense" do
     describe "successfully" do
@@ -125,9 +123,6 @@ shared_examples_for "expenses controller" do
 
 
 
-  after(:each) do
-    Event.all.each {|e| e.destroy}
-  end
 
 end
 

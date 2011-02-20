@@ -2,11 +2,10 @@ require 'spec_helper'
 
 describe EventsController do
 include ControllerHelper
-  before(:each) do
-    @event = Event.create(:name=>"Och Aye")
-    login
-  end
 
+  always_login
+  always_creates_event
+  
   after(:each) do
     Event.all{|event| event.destroy}
   end

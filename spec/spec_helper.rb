@@ -25,8 +25,27 @@ module ControllerHelper
   def self.included(mod)
     mod.class_eval do 
       render_views
+
+      def self.always_creates_event
+
+        before(:each) do
+          @event = Event.create(:name=>'Och AYE')
+        end
+
+        after(:each) do
+          Event.all.each {|e| e.destroy}
+        end
+      end
+
+      def self.always_login
+        before(:each) do
+          login
+        end
+      end
     end
   end
+
+
 
   def login
     request.env["HTTP_AUTHORIZATION"] = "Basic " + Base64::encode64("ruby:w3r3w01f")

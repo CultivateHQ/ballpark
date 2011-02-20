@@ -6,6 +6,7 @@ Enigma::Application.routes.draw do
     resources :tickets do
       put :update_ticket_cost_details, :on=>:collection
     end
+    resources :sponsors
   end
 
   match "/" => redirect("/events")

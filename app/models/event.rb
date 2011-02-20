@@ -15,6 +15,7 @@ class Event
   end
 
   embeds_many :tickets
+  embeds_many :sponsors
 
   def capacity
     tickets.sum(&:capacity)
