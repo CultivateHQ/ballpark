@@ -5,6 +5,9 @@
       =link_to "Tickets", event_tickets_path(@event)
       .value=@event.capacity
     .detail
+      =link_to "Sponsors", event_sponsors_path(@event)
+      .value=money(@event.sponsors.total_price)
+    .detail
       =link_to "Fixed expenses", event_fixed_expenses_path(@event)
       .value= money(@event.fixed_expenses.total)
     .detail

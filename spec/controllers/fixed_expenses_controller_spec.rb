@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'expenses_controller_spec_base'
 
 describe FixedExpensesController do
-  
+
   it_should_behave_like "expenses controller"
 
   def expenses
@@ -17,5 +17,12 @@ describe FixedExpensesController do
     event_fixed_expenses_path(@event.id)
   end
 
+  def expenses_class
+    FixedExpense
+  end
+
+  def expense_param
+    :fixed_expense
+  end
 
 end

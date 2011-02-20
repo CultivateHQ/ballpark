@@ -27,6 +27,26 @@ describe Event do
     end
   end
 
+
+  describe "sponsors" do
+    describe "total_price" do
+      it "should be the sum of all the sponsorship cash" do
+        event.sponsors.total_price.should == 0
+        event.sponsors.create(:name=>'A', :number_of_tickets=>0,:price=>1000)
+        event.sponsors.total_price.should == 1000
+      end
+    end
+
+    describe "total tickets" do
+      it "should be the sum of all the sponsorship tickets" do
+        event.sponsors.create(:name=>'A', :number_of_tickets=>1,:price=>1000)
+        event.sponsors.create(:name=>'B', :number_of_tickets=>3,:price=>1000)
+        event.sponsors.total_tickets.should == 4
+      end
+
+    end
+  end
+
   describe "scenarios" do
     before(:each) do
       event.tickets << Ticket.new(:name=>"Free", :price=>0, :capacity=>5)
@@ -84,6 +104,23 @@ describe Event do
 
     end
 
+    describe "sponsorship" do
+      before(:each) do
+        event.sponsors.create(:name=>"A", :price=>1000, :number_of_tickets=>2)
+        event.sponsors.create(:name=>"B", :price=>2000, :number_of_tickets=>3)
+      end
+
+      it "cost of for sponsors should be included in the total cost" do
+        event.scenario_for(0).total_cost.should == 200
+        event.scenario_for(0).delegate_cost.should == 50
+      end
+
+      it "should include sponsorship income in the total income" do
+        event.scenario_for(0).total_income.should == 3000
+        event.scenario_for(0).sponsorship_income.should == 3000
+      end
+    end
+
     describe "tickets sold" do
       it "should assume tickets sold cheapest first" do
         event.scenario_for(00).tickets_sold.should == {"Free"=>0, "Mid"=>0, "High"=>0}
@@ -91,9 +128,8 @@ describe Event do
         event.scenario_for(20).tickets_sold.should == {"Free"=>5, "Mid"=>15, "High"=>0}
         event.scenario_for(25).tickets_sold.should == {"Free"=>5, "Mid"=>15, "High"=>5}
       end
-
     end
+
+
   end
-
-
 end

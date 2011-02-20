@@ -16,4 +16,11 @@ describe DelegateExpensesController do
   def expenses_path
     event_delegate_expenses_path(@event.id)
   end
+  def expenses_class
+    DelegateExpense
+  end
+
+  def expense_param
+    :delegate_expense
+  end
 end

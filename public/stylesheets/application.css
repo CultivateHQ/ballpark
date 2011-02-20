@@ -113,7 +113,8 @@ table.expenses td.amount {
 
 .summary .summary_item{
   font-weight: bold;
-  width: 100px;
+  width: 250px;
+  padding: 3px;
   float: left;
 }
 

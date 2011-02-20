@@ -15,6 +15,11 @@
           %td.price=money(ticket.price)
           %td.sold= @scenario.tickets_sold[ticket.name]
           %td.income=money(ticket.price *  @scenario.tickets_sold[ticket.name])
+      %tr
+        %td.name='Sponsor'
+        %td.price
+        %td.sold=@event.sponsors.total_tickets
+        %td.income
 
 .summary
   %ul
@@ -22,10 +27,16 @@
       %span.summary_item Total income
       %span.summary_amount=money(@scenario.total_income)
     %li
-      %span.summary_item Ticket costs
+      %span.summary_item Cost of ticket sales
       %span.summary_amount=money(@scenario.ticket_cost)
     %li
-      %span.summary_item General costs
+      %span.summary_item  Fixed costs
+      %span.summary_amount=money(@scenario.fixed_costs)
+    %li
+      %span.summary_item Delegate costs
+      %span.summary_amount=money(@scenario.delegate_cost)
+    %li
+      %span.summary_item All costs
       %span.summary_amount=money(@scenario.total_cost)
     %li
       %span.summary_item Profit

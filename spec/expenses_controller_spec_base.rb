@@ -8,7 +8,7 @@ shared_examples_for "expenses controller" do
   describe "creating expense" do
     describe "successfully" do
       before(:each) do
-        post :create, :expense=>{:description=>'Haggis', :amount=>'45.50'}, :event_id=>@event.id.to_s
+        post :create, expense_param=>{:description=>'Haggis', :amount=>'45.50'}, :event_id=>@event.id.to_s
       end
 
       it "should add the expense to the event, and save" do
@@ -25,7 +25,7 @@ shared_examples_for "expenses controller" do
 
     describe "unsuccessfully" do
       before(:each) do
-        post :create, :expense=>{}, :event_id=>@event.id.to_s
+        post :create, expense_param=>{}, :event_id=>@event.id.to_s
       end
 
       it "should render the index" do
@@ -43,6 +43,15 @@ shared_examples_for "expenses controller" do
       end
     end
   end
+
+  describe "index" do
+    it "renders ok" do
+      get :index, :event_id => @event.id
+      assert assigns(:expense)
+      assert_equal assigns(:expense).class, expenses_class
+    end
+  end
+
   describe "operating on an expense" do
     before(:each) do
       expenses.create(:description=>'Venue', :amount=>1200)
@@ -90,7 +99,7 @@ shared_examples_for "expenses controller" do
 
       describe "valid" do
         before(:each) do
-          put :update, :event_id=>@event.id.to_s, :id=>expense_updated.id.to_s, :expense=>{:description=>'Big Venue', :amount=>2500}
+          put :update, :event_id=>@event.id.to_s, :id=>expense_updated.id.to_s, expense_param=>{:description=>'Big Venue', :amount=>2500}
         end
 
         it "should redirect to index" do
@@ -105,7 +114,7 @@ shared_examples_for "expenses controller" do
 
       describe "invalid" do
         before(:each) do
-          put :update, :event_id=>@event.id.to_s, :id=>expense_updated.id.to_s, :expense=>{:description=>'', :amount=>2500}
+          put :update, :event_id=>@event.id.to_s, :id=>expense_updated.id.to_s, expense_param=>{:description=>'', :amount=>2500}
         end
 
         it "should render edit" do
