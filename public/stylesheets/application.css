@@ -145,3 +145,20 @@ a:hover{
   width: 600px;
   margin: 20px ;
 }
+
+input#event_percent_cost_per_ticket, input#event_fixed_cost_per_ticket{
+  width: 40px;
+}
+
+li#event_fixed_cost_per_ticket_input, li#event_percent_cost_per_ticket_input{
+  display: inline;
+  float: left;
+  padding-right: 30px;
+}
+
+li#event_fixed_cost_per_ticket_input label{
+  width: 160px;
+}
+li#event_percent_cost_per_ticket_input label{
+  width: 170px;
+}
