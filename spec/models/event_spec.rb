@@ -77,7 +77,9 @@ describe Event do
       it "takes into account percent cost per ticket" do
         event.percent_cost_per_ticket = 10
         event.scenario_for(6).total_income.should == 90
+        event.scenario_for(6).ticket_cost.should == 10
         event.scenario_for(21).total_income.should == 1530
+        event.scenario_for(21).ticket_cost.should == 170
       end
     end
 
