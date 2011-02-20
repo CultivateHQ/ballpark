@@ -105,6 +105,9 @@ table.expenses td.amount {
   padding: 0 20px;
 }
 
+.summary ul{
+  padding: 5px;
+}
 
 .summary li{
   margin: 20px;

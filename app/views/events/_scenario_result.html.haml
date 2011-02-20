@@ -24,8 +24,15 @@
 .summary
   %ul
     %li
+      %span.summary_item Ticket Sales
+      %span.summary_amount=money(@scenario.sales_income)
+    %li
+      %span.summary_item Sponsorship
+      %span.summary_amount=money(@scenario.sponsorship_income)
+    %li
       %span.summary_item Total income
       %span.summary_amount=money(@scenario.total_income)
+  %ul
     %li
       %span.summary_item Cost of ticket sales
       %span.summary_amount=money(@scenario.ticket_cost)
@@ -38,6 +45,7 @@
     %li
       %span.summary_item All costs
       %span.summary_amount=money(@scenario.total_cost)
+  %ul
     %li
       %span.summary_item Profit
       %span.summary_amount=money(@scenario.profit)
