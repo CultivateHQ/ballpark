@@ -44,4 +44,18 @@ include ControllerHelper
     end
   end
 
+  describe "create" do
+    before(:each) do
+      post :create, :event=>{:name=>'Oooplah'}
+    end
+
+    it "redirects" do
+      response.should redirect_to(:action=>:index)
+    end
+    
+    it "creates the event" do
+      assert Event.find(:conditions=>{:name=>'Oooplah'})
+    end
+  end
+
 end

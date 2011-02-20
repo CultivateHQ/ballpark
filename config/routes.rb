@@ -3,7 +3,9 @@ Enigma::Application.routes.draw do
     get :scenario, :on=>:member
     resources :fixed_expenses
     resources :delegate_expenses
-    resources :tickets
+    resources :tickets do
+      put :update_ticket_cost_details, :on=>:collection
+    end
   end
 
   match "/" => redirect("/events")

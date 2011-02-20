@@ -7,7 +7,6 @@ class BaseExpensesController < ApplicationController
     @expense = expense_class.new(params[:expense])
     if @expense.valid?
       expenses << @expense
-      @event.save!
       redirect_to expenses_path, :notice=>'Expense added'
     else
       render :index
@@ -22,7 +21,6 @@ class BaseExpensesController < ApplicationController
   def update
     @expense.update_attributes params[:expense]
     if @expense.valid?
-      @event.save
       redirect_to expenses_path
     else
       render :edit

@@ -9,10 +9,13 @@ describe TicketsController do
 
 
   def self.it_should_redirect_to_index
-      it "should redirect to the index" do
-        response.should redirect_to(:action=>:index)
-      end
+    it "should redirect to the index" do
+      response.should redirect_to(:action=>:index)
+      assert assigns(:ticket)
+      assert_equal @event, assigns(:event)
+    end
   end
+
   describe :index do
     before(:each) do
       get :index, :event_id=>@event.id.to_s
@@ -21,15 +24,14 @@ describe TicketsController do
     it "should render index and assign tickets" do
       response.should be_success
       response.should render_template 'index'
-      assigns(:tickets).should_not be_nil
       assigns(:event).should_not be_nil
+
     end
 
   end
 
   describe :create do
     describe :successful do
-
 
       before(:each) do
         post :create, :event_id=>@event.id.to_s, :ticket=>{:capacity=>5, :price=>100,:name=>'Early Bird'}
@@ -113,6 +115,20 @@ describe TicketsController do
 
     it_should_redirect_to_index
 
+  end
+
+
+  describe :update_ticket_cost_details do
+    before(:each) do
+      put :update_ticket_cost_details, :event_id=>@event.id.to_s, :event=>{:fixed_cost_per_ticket=>0.99, :percent_cost_per_ticket=>4.1}
+    end
+
+    it_should_redirect_to_index
+
+    it "updates the ticket cost" do
+      assert_equal 0.99, @event.reload.fixed_cost_per_ticket
+      assert_equal 4.1, @event.percent_cost_per_ticket
+    end
   end
 
 end

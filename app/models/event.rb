@@ -1,6 +1,8 @@
 class Event
   include Mongoid::Document
   field :name
+  field :fixed_cost_per_ticket, :type=>Float, :default=>0.0
+  field :percent_cost_per_ticket, :type=>Float, :default=>0.0
 
   validates_presence_of :name
 
@@ -33,7 +35,10 @@ class Event
       tickets_unaccounted = sales
       event.tickets.sort_by(&:price).each do |ticket|
         sold = [ticket.capacity, tickets_unaccounted].min
-        @total_income += sold * ticket.price
+        ticket_sales = sold * ticket.price
+        ticket_fixed_cost = sold * event.fixed_cost_per_ticket
+        ticket_percent_cost = ticket_sales * event.percent_cost_per_ticket / 100
+        @total_income += ticket_sales - ticket_fixed_cost - ticket_percent_cost
         tickets_unaccounted -= sold
         @tickets_sold[ticket.name] = sold
       end

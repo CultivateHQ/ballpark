@@ -2,7 +2,6 @@ class TicketsController < ApplicationController
   before_filter :find_event_and_tickets
 
   def index
-    @tickets = @event.tickets
     @ticket =  Ticket.new
   end
 
@@ -17,6 +16,8 @@ class TicketsController < ApplicationController
     end
   end
 
+
+
   def update
     @ticket.update_attributes params[:ticket]
     if @ticket.valid?
@@ -25,6 +26,11 @@ class TicketsController < ApplicationController
     else
       render :action=>:index
     end
+  end
+
+  def update_ticket_cost_details
+    @event.update_attributes(params[:event])
+    redirect_to_index
   end
 
   def destroy
@@ -38,4 +44,8 @@ private
     @ticket = @event.tickets.find(params[:id]) if params[:id]
   end
 
+  def redirect_to_index
+    @ticket||=  Ticket.new
+    redirect_to :action=>:index
+  end
 end

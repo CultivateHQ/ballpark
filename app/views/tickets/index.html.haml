@@ -1,4 +1,13 @@
 %h1 #{link_to @event.name, event_path(@event)}: Tickets
+%h2 Ticket costs
+=semantic_form_for @event, :url=>update_ticket_cost_details_event_tickets_path(@event) do |f|
+  =f.inputs do
+    =f.input :fixed_cost_per_ticket, :as=>:numeric
+    =f.input :percent_cost_per_ticket, :as=>:numeric
+  =f.buttons do
+    =f.commit_button
+
+
 %h2= link_to_function "New Ticket", "jQuery('#new_ticket').toggle('blind')"
 #new_ticket{:style=>new_ticket_style}
   = render 'form', :form_url=>event_tickets_path(@event)
@@ -10,7 +19,7 @@
     %th Capacity
     %th
   %tbody
-    -@tickets.each do |ticket|
+    -@event.tickets.each do |ticket|
       %tr{:class=>cycle('even', 'odd')}
         %td.name=ticket.name
         %td.price=money(ticket.price)

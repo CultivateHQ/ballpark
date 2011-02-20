@@ -22,6 +22,12 @@ RSpec.configure do |config|
 end
 
 module ControllerHelper
+  def self.included(mod)
+    mod.class_eval do 
+      render_views
+    end
+  end
+
   def login
     request.env["HTTP_AUTHORIZATION"] = "Basic " + Base64::encode64("ruby:w3r3w01f")
   end
