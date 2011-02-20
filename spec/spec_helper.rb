@@ -29,11 +29,10 @@ module ControllerHelper
       def self.always_creates_event
 
         before(:each) do
-          @event = Event.create(:name=>'Och AYE')
+          @event = Fabricate(:event, :name=>'Och AYE')
         end
-
         after(:each) do
-          Event.all.each {|e| e.destroy}
+          Event.all.destroy
         end
       end
 
