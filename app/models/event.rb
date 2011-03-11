@@ -1,5 +1,6 @@
 class Event
   include Mongoid::Document
+  referenced_in :user
   field :name
   field :fixed_cost_per_ticket, :type=>Float, :default=>0.0
   field :percent_cost_per_ticket, :type=>Float, :default=>0.0

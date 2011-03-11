@@ -5,9 +5,17 @@ include ControllerHelper
 
   always_login
   always_creates_event
-  
-  after(:each) do
-    Event.all{|event| event.destroy}
+
+
+
+  describe "scoping" do
+    it "only finds events belonging to the current user" do
+      other_user = Fabricate(:user, :email=>'other@example.com')
+      other_event = other_user.events.create!(:name=>'Other event')
+      assert_raise(Mongoid::Errors::DocumentNotFound) do
+        get 'show', :id=>other_event.id
+      end
+    end
   end
 
   describe "showing event" do
@@ -45,15 +53,18 @@ include ControllerHelper
 
   describe "create" do
     before(:each) do
-      post :create, :event=>{:name=>'Oooplah'}
+      post :create, :event=>{:name=>'pingu'}
     end
 
     it "redirects" do
       response.should redirect_to(:action=>:index)
     end
-    
     it "creates the event" do
-      assert Event.find(:conditions=>{:name=>'Oooplah'})
+      assert Event.find(:first, :conditions=>{:name=>'pingu'})
+    end
+
+    it "associates the event with the current user" do
+      assert_equal controller.current_user, Event.find(:first, :conditions=>{:name=>'pingu'}).user
     end
   end
 

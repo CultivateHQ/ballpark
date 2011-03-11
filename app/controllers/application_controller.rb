@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
   protect_from_forgery
 
-  def find_event
-    @event = Event.find(params[:event_id])
+  def find_event(id=params[:event_id])
+    @event = current_user.events.find(id)
   end
 
   private

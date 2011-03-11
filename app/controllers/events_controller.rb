@@ -21,16 +21,15 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(params[:event])
+    @event = current_user.events.create(params[:event])
     redirect_to :action=>:index
   end
 
 private
 
   def find_event
-    @event = Event.find(params[:id])
+    super(params[:id])
   end
-
   def scenario_for(sales)
     @scenario = @event.scenario_for(sales.to_i)
   end

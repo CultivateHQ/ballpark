@@ -5,7 +5,8 @@ class User
 
 
   validates_uniqueness_of  :email, :case_sensitive => false
-
   attr_accessible :email, :password, :password_confirmation
+
+  references_many :events
 end
 

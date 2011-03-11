@@ -24,16 +24,17 @@ end
 
 module ControllerHelper
   def self.included(mod)
-    mod.class_eval do 
+    mod.class_eval do
       render_views
 
       def self.always_creates_event
 
         before(:each) do
-          @event = Fabricate(:event, :name=>'Och AYE')
+          @event = Fabricate(:event, :name=>'Och AYE', :user=>default_user)
         end
         after(:each) do
           Event.all.destroy
+          User.all.destroy
         end
       end
 
@@ -46,10 +47,12 @@ module ControllerHelper
   end
 
 
+  def default_user
+    User.find(:first, conditions:{email:'bob@example.com'}) || Fabricate(:user, email:'bob@example.com')
+  end
 
   def login
-    @user = User.find(:first, conditions:{email:'bob@example.com'}) || Fabricate(:user, email:'bob@example.com')
     sign_out :user
-    sign_in @user
+    sign_in default_user
   end
 end
