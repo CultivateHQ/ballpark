@@ -9,7 +9,9 @@ Enigma::Application.routes.draw do
     resources :sponsors
   end
 
-  match "/" => redirect("/events")
+  devise_for :users
+  root :to=> redirect("/events")
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
