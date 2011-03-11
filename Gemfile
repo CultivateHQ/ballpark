@@ -28,7 +28,6 @@ gem 'rails', '>=3.0.4'
 #   gem 'webrat'
 # end
 gem 'haml'
-gem 'utility_belt'
 gem "mongoid", "2.0.0.rc.7"
 gem 'bson_ext', "~> 1.2"
 gem 'mongo_ext'
@@ -36,9 +35,7 @@ gem 'formtastic', '>= 1.1.0'
 
 group :development do
   gem 'fabrication'
-  gem 'mongrel'
   gem 'rspec-rails', '>= 2.0.0.beta.19'
-  gem 'ruby-debug'
 end
 
 group :test do
