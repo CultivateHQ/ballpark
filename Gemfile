@@ -28,21 +28,16 @@ gem 'rails', '3.0.0'
 #   gem 'webrat'
 # end
 gem 'haml'
-gem 'utility_belt'
-#gem 'mongo_mapper'
 gem "mongoid", "2.0.0.rc.7"
 gem 'bson_ext', "~> 1.2"
 gem 'mongo_ext'
 gem 'formtastic', '>= 1.1.0'
 
 group :development do
-  gem 'mongrel'
   gem 'rspec-rails', '>= 2.0.0.beta.19'
-  gem 'ruby-debug'
 end
 
 group :test do
-  gem 'ruby-debug'
   gem 'webrat'
   gem 'rspec',       '>= 2.0.0.beta.19'
   gem 'rspec-rails', '>= 2.0.0.beta.19'
