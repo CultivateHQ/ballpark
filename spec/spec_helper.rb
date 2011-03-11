@@ -17,6 +17,7 @@ RSpec.configure do |config|
   # config.mock_with :flexmock
   # config.mock_with :rr
   config.mock_with :flexmock
+  config.include Devise::TestHelpers, :type => :controller
 
 
 end
@@ -47,6 +48,8 @@ module ControllerHelper
 
 
   def login
-    request.env["HTTP_AUTHORIZATION"] = "Basic " + Base64::encode64("ruby:w3r3w01f")
+    @user = User.find(:first, conditions:{email:'bob@example.com'}) || Fabricate(:user, email:'bob@example.com')
+    sign_out :user
+    sign_in @user
   end
 end

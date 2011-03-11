@@ -67,7 +67,7 @@ class Event
     def sponsorship_income
       @event.sponsors.total_price
     end
-    
+
 
     private
     def count_tickets

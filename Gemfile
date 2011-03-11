@@ -41,7 +41,6 @@ end
 
 group :test do
   gem 'fabrication'
-  gem 'ruby-debug'
   gem 'webrat'
   gem 'rspec',       '>= 2.0.0.beta.19'
   gem 'rspec-rails', '>= 2.0.0.beta.19'
