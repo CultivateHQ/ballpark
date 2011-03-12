@@ -8,6 +8,7 @@
     = stylesheet_link_tag 'application'
     = csrf_meta_tag
   %body
+    =link_to "Log out", destroy_user_session_path if user_signed_in?
     #container
       - if notice.present?
         %p.notice= notice
