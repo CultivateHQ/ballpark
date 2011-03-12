@@ -49,6 +49,11 @@ include ControllerHelper
     it "displayes the correct scenario" do
       assigns(:scenario).sales.should == 35
     end
+
+    it "saves the sales as default sales on the event" do
+      assert_equal 35, @event.reload.default_sales
+    end
+
   end
 
   describe "create" do

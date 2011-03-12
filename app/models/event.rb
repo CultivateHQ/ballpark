@@ -4,6 +4,7 @@ class Event
   field :name
   field :fixed_cost_per_ticket, :type=>Float, :default=>0.0
   field :percent_cost_per_ticket, :type=>Float, :default=>0.0
+  field :default_sales, :type=>Integer
 
   validates_presence_of :name
 
