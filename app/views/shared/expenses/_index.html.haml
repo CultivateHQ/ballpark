@@ -10,8 +10,8 @@
     %th &nbsp;
   %tfoot
     %td.description Total
-    %td.amount=expenses.total
-      
+    %td.amount=money expenses.total
+
   %tbody
     -expenses.each do |expense|
       %tr{:class=>cycle('even', 'odd')}
