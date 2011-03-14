@@ -4,13 +4,13 @@
   %table.tickets
     %thead
       %tr
-        %th Ticket
+        %th Ticket Type
         %th Price
         %th Sold
         %th Income
     %tbody
       -@event.tickets.each do |ticket|
-        %tr 
+        %tr
           %td.name=ticket.name
           %td.price=money(ticket.price)
           %td.sold= @scenario.tickets_sold[ticket.name]
@@ -46,7 +46,7 @@
       %span.summary_item All costs
       %span.summary_amount=money(@scenario.total_cost)
   %ul
-    %li
+    %li.profit
       %span.summary_item Profit
       %span.summary_amount=money(@scenario.profit)
 

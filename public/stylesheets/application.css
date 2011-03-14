@@ -1,9 +1,15 @@
+html, body {
+  height     : 100%; /* Required */
+  background : #efefe7 url(/images/body_background.gif);
+}
+
 body {
-  font-family: verdana, sans-serif;
-  width: 960px;
-  background-color: white;
-  color: #333333; 
-  font-size: 13px}
+  font-family     : 'Helvetica Neue', verdana, sans-serif;
+  width           : 960px;
+  color           : #333333;
+  font-size       : 100%;
+  margin          : 0 auto;
+}
 
 .notice {
   color: green;
@@ -26,8 +32,41 @@ ul.event_list {
   li {
     padding: 2px 10px; } }
 
+#header{
+  border-bottom: 1px solid #eee;
+  margin: 0 0 1em;
+  position: relative;
+  padding-top: 20px;
+}
+
+#header a{
+  color: #666;
+}
+
+#header .edgecase a{
+  background: #F58D59;
+  border-bottom-left-radius: 4px 4px;
+  border-bottom-left-radius: 4px 4px;
+  border-bottom-right-radius: 4px 4px;
+  border-bottom-right-radius: 4px 4px;
+  color: white;
+  display: block;
+  font: normal normal normal 12px/normal arial, sans-serif;
+  height: 20px;
+  line-height: 18px;
+  padding: 0px 15px;
+  position: absolute;
+  right: 0px;
+  text-decoration: none;
+  top: 0px;
+}
+
+
 #container {
-  margin: 20px; }
+  padding: 20px;
+  border: 3px solid #eee;
+  background-color:  rgba(255,255,255,0.6);
+}
 
 p {
   margin: 0 0 20px; }
@@ -47,8 +86,15 @@ h3 {
   float: left;
 }
 
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+
 table td{
+  min-width: 75px;
   border: thin solid lavender;
+  padding: 5px;
 }
 
 table td.edit{
@@ -56,23 +102,25 @@ table td.edit{
 }
 
 table th{
+  padding: 5px;
+  text-align: left;
   background-color: #f5f5f5;
+  border: thin solid lavender;
 }
 
 
 .sponsors{
-  margin: 20px;
+  margin: 20px 0 0;
 }
 
 table.sponsors td.name {width: 300px}
 table.sponsors td.price, table.sponsors td.number_of_tickets {
   text-align: right;
-  padding: 0 20px;
 }
 
 
 table.sponsors td.price{
-  width: 80px;
+  width: 100px;
 }
 
 table.sponsors td.number_of_tickets{
@@ -80,18 +128,17 @@ table.sponsors td.number_of_tickets{
 }
 
 .tickets{
-  margin: 20px;
+  margin: 20px 0 20px;
 }
 
-table.tickets td.name {width: 300px}
+table.tickets td.name {width: 550px}
 table.tickets td.price, table.tickets td.capacity {
   text-align: right;
-  padding: 0 20px;
 }
 
 
 table.tickets td.price{
-  width: 80px;
+  text-align: left;
 }
 
 table.tickets td.capacity{
@@ -100,17 +147,23 @@ table.tickets td.capacity{
 
 table.expenses  td.description{ width:400px;}
 table.expenses td.amount {
-  width: 80px; 
+  width: 80px;
   text-align: right;
   padding: 0 20px;
 }
 
+.summary{
+  border-top: 3px solid #eee;
+}
+
 .summary ul{
   padding: 5px;
+  width: 400px;
+  margin: 0 auto;
 }
 
 .summary li{
-  margin: 20px;
+  margin: 20px 0;
   clear: both;
 }
 
@@ -136,13 +189,18 @@ table.expenses tfoot td{
   font-weight: bolder;
   font-size: 120%;
   width: 100%;
-  text-align: center;
+  text-align: left;
+  margin: 20px;
 }
 
 .scenario, .event_details{
   margin: 20px;
+/*  border: solid 1px;*/
+}
+
+.event_details{
+  background-color: #F8F9F6;
   padding: 20px;
-  border: solid 1px;
 }
 
 .event_details .detail{
@@ -165,8 +223,14 @@ a:hover{
   color:#4100aa;}
 
 #ticket_slider{
-  width: 600px;
-  margin: 20px ;
+  width: 100%;
+  margin: 10px 0;
+}
+
+#ticket_slider_value{
+  margin-top: 10px;
+  display: inline-block;
+  font-weight: bold;
 }
 
 input#event_percent_cost_per_ticket, input#event_fixed_cost_per_ticket{
@@ -184,4 +248,9 @@ li#event_fixed_cost_per_ticket_input label{
 }
 li#event_percent_cost_per_ticket_input label{
   width: 170px;
+}
+
+li.profit{
+  padding: 5px 0;
+  border-top: 1px solid #eee;
 }
