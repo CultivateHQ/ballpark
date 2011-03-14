@@ -43,6 +43,14 @@ ul.event_list {
   color: #666;
 }
 
+#header .logout a{
+  position: absolute;
+  top: 0px;
+  right: 120px;
+  font-size: 0.8em;
+  line-height: 1.5em;
+}
+
 #header .edgecase a{
   background: #F58D59;
   border-bottom-left-radius: 4px 4px;
