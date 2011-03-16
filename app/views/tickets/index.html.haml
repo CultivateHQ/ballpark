@@ -1,11 +1,7 @@
 %h1 #{link_to @event.name, event_path(@event)}: Tickets
-%h2 Ticket costs
-=semantic_form_for @event, :url=>update_ticket_cost_details_event_tickets_path(@event) do |f|
-  =f.inputs do
-    =f.input :fixed_cost_per_ticket, :as=>:numeric
-    =f.input :percent_cost_per_ticket, :as=>:numeric
-    =f.commit_button
 
+%p.description
+  Add all your ticket types here (eg early-bird, standard), remembering to include any "free tickets" such as organisers, speakers, helpers.
 
 %h2= link_to_function "New Ticket", "jQuery('#new_ticket').toggle('blind')"
 #new_ticket{:style=>new_ticket_style}
@@ -28,3 +24,9 @@
             !=jquery_icon('pencil', 'Edit')
           =link_to event_ticket_path(@event.id, ticket.id), :method=>:delete, :confirm=>'Delete ticket?' do
             != jquery_icon('circle-minus', 'Delete') 
+%h2 Ticket overheads (payment processing fees, etc..)
+=semantic_form_for @event, :url=>update_ticket_cost_details_event_tickets_path(@event) do |f|
+  =f.inputs do
+    =f.money :fixed_cost_per_ticket
+    =f.input :percent_cost_per_ticket, :as=>:numeric
+    =f.commit_button

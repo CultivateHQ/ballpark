@@ -5,4 +5,5 @@ class Expense
   field :description
 
   validates_presence_of :amount, :description
+  validates_numericality_of :amount
 end

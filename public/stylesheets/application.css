@@ -23,9 +23,14 @@ body {
     display: block;
     height: 0;
     clear: both;
-    visibility: hidden; } }
+    visibility: hidden;
+}
 
 
+p.description {
+  background: #f9f9f9;
+  font-size: 90%;
+}
 
 ul.event_list {
   margin: 10px 0;
@@ -145,9 +150,6 @@ table.tickets td.price, table.tickets td.capacity {
 }
 
 
-table.tickets td.price{
-  text-align: left;
-}
 
 table.tickets td.capacity{
   width: 40px;
@@ -221,6 +223,10 @@ table.expenses tfoot td{
   display: block;
   width: 180px;
   padding: 5px;
+}
+.event_details .detail .value {
+   text-align: right;
+   width: 100px;
 }
 
 

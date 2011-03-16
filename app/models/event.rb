@@ -6,6 +6,9 @@ class Event
   field :percent_cost_per_ticket, :type=>Float, :default=>0.0
   field :default_sales, :type=>Integer
 
+  validates_numericality_of :fixed_cost_per_ticket, :percent_cost_per_ticket
+  validate :default_sales, :numericality=>true, :presence=>false
+
   validates_presence_of :name
 
   %w(delegate fixed).each do |type|

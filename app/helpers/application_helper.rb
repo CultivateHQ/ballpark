@@ -10,4 +10,15 @@ module ApplicationHelper
   def money(amount)
     number_to_currency(amount, :unit=>'')
   end
+
+end
+
+Formtastic::SemanticFormBuilder.class_eval do
+  include ActionView::Helpers::NumberHelper
+  Helper = Object.new
+  Helper.extend  ActionView::Helpers::NumberHelper
+
+  def money(field, options={})
+    input field, {:as=>:numeric, :input_html=>{:value=>Helper.number_with_precision(object.send(field), :precision=>2)}}.merge(options)
+  end
 end

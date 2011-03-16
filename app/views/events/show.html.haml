@@ -19,6 +19,9 @@
       Tickets:
       #ticket_slider_value=@scenario.sales
       #ticket_slider
+        =image_tag "spinner.gif", :style=>"display:none;", :id=>'spinner'
+      %p.description
+        Use this slider to see your profit / loss amount for how many tickets you manage to sell.  (The assumption is that your cheapest tickets go first.)
     #scenario_result
       =render 'scenario_result'
 
@@ -27,5 +30,12 @@
     max:#{@event.capacity},
     min:0,
     value:#{@scenario.sales},
-    change: function(event, ui){jQuery.get('#{scenario_event_path(@event.id)}?sales=' + ui.value, function(scenario){jQuery('#scenario_result').html(scenario);});},
+    change: function(event, ui){
+      $('#spinner').show();
+      jQuery.get('#{scenario_event_path(@event.id)}?sales=' + ui.value, 
+        function(scenario){
+          jQuery('#scenario_result').html(scenario);
+          $('#spinner').hide();
+        })
+      ;},
     slide: function(event, ui){jQuery('#ticket_slider_value').html(ui.value);}});

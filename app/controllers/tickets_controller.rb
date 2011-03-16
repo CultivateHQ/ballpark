@@ -33,8 +33,12 @@ class TicketsController < ApplicationController
   end
 
   def update_ticket_cost_details
-    @event.update_attributes(params[:event])
-    redirect_to_index
+    if @event.update_attributes(params[:event])
+      redirect_to_index
+    else
+      @ticket = Ticket.new
+      render :action=>:index
+    end
   end
 
   def destroy

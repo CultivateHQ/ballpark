@@ -95,8 +95,9 @@ describe TicketsController do
       it "should not update the ticket" do
         @event.reload.tickets.first.name.should == 'Early worm'
       end
-
     end
+
+    describe :unsuccessful
   end
 
   describe :destroy do
@@ -116,15 +117,29 @@ describe TicketsController do
 
 
   describe :update_ticket_cost_details do
-    before(:each) do
-      put :update_ticket_cost_details, :event_id=>@event.id.to_s, :event=>{:fixed_cost_per_ticket=>0.99, :percent_cost_per_ticket=>4.1}
+    describe :successful do
+      before(:each) do
+        put :update_ticket_cost_details, :event_id=>@event.id.to_s, :event=>{:fixed_cost_per_ticket=>0.99, :percent_cost_per_ticket=>4.1}
+      end
+
+      it_should_redirect_to_index
+
+      it "updates the ticket cost" do
+        assert_equal 0.99, @event.reload.fixed_cost_per_ticket
+        assert_equal 4.1, @event.percent_cost_per_ticket
+      end
     end
 
-    it_should_redirect_to_index
+    describe :unsuccessful do
 
-    it "updates the ticket cost" do
-      assert_equal 0.99, @event.reload.fixed_cost_per_ticket
-      assert_equal 4.1, @event.percent_cost_per_ticket
+      before(:each) do
+        put :update_ticket_cost_details, :event_id=>@event.id.to_s, :event=>{:fixed_cost_per_ticket=>'fish', :percent_cost_per_ticket=>4.1}
+      end
+
+      it "should render index" do
+        assert_template 'index'
+      end
+
     end
   end
 

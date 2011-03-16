@@ -1,4 +1,6 @@
 %h1 #{link_to @event.name, event_path(@event)}: Sponsors
+%p.description
+  If you are lucky enough to have sponsors, you can account for the cost offset here. List each sponsor separately. Put the number of free tickets each sponsor receives down, as these will affect your per-delegate spending.
 %h2= link_to_function "New Sponsor", "$('#new_sponsor').toggle('blind')"
 #new_sponsor{:style=>new_sponsor_style}
   = render 'form', :form_url=>event_sponsors_path(@event)
@@ -14,7 +16,7 @@
       -@event.sponsors.each do |sponsor|
         %tr{:class=>cycle('even', 'odd')}
           %td.name=sponsor.name
-          %td.price=sponsor.price
+          %td.price=money(sponsor.price)
           %td.number_of_tickets=sponsor.number_of_tickets
           %td.edit
             =link_to edit_event_sponsor_path(@event.id, sponsor.id) do
