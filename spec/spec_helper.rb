@@ -48,7 +48,7 @@ module ControllerHelper
 
 
   def default_user
-    User.find(:first, conditions:{email:'bob@example.com'}) || Fabricate(:user, email:'bob@example.com')
+    User.find(:first, conditions:{email:'bob@example.com'}) || Fabricate(:user, email:'bob@example.com', :confirmed_at=>Time::now)
   end
 
   def login
