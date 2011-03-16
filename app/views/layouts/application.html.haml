@@ -10,7 +10,7 @@
     = csrf_meta_tag
   %body(lang="en")
     #header
-      %h1=link_to 'EdgeCase Event Planner', events_path
+      %h1=link_to 'Ballpark', events_path
       .logout=link_to "Log out", destroy_user_session_path if user_signed_in?
       .edgecase=link_to 'EdgeCase &rarr;'.html_safe, 'http://edgecase.com'
     #container
