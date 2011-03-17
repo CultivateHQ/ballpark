@@ -12,10 +12,10 @@ Enigma::Application.routes.draw do
     end
 
     devise_for :users
-    root :to=> redirect("/events")
 
   end
 
+  root :to=> redirect("/events")
   match "/*path", :to => redirect { |_, request| "https://" + request.host_with_port + request.fullpath } if require_ssl
 
 end
