@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '>=3.0.4'
+gem 'rails', '~> 3.0.19'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -30,21 +30,21 @@ gem 'rails', '>=3.0.4'
 gem 'haml'
 gem "mongoid", "2.0.0.rc.7"
 gem 'bson_ext', "~> 1.2"
-gem 'mongo_ext'
-gem 'formtastic', '>= 1.1.0'
-gem 'devise'
+gem 'mongo_ext', '~> 0.19.3'
+gem 'formtastic', '~> 1.1.0'
+gem 'devise', '~> 1.1.7'
 
 group :development do
-  gem 'fabrication'
-  gem 'rspec-rails', '>= 2.0.0.beta.19'
+  gem 'fabrication', '~> 0.9.5'
+  gem 'rspec-rails', '~> 2.0.0.beta.19'
 end
 
 group :test do
-  gem 'fabrication'
-  gem 'webrat'
-  gem 'rspec',       '>= 2.0.0.beta.19'
-  gem 'rspec-rails', '>= 2.0.0.beta.19'
-  gem 'flexmock'
+  gem 'fabrication', '~> 0.9.5'
+  gem 'webrat', '~> 0.7.3'
+  gem 'rspec',       '~> 2.0.0.beta.19'
+  gem 'rspec-rails', '~> 2.0.0.beta.19'
+  gem 'flexmock', '~> 0.9.0'
 end
 
 
