@@ -12,7 +12,7 @@
     #header
       %h1=link_to 'Ballpark', events_path
       .logout=link_to "Log out", destroy_user_session_path if user_signed_in?
-      .edgecase=link_to 'EdgeCase &rarr;'.html_safe, 'http://edgecase.com'
+      .cultivate=link_to 'Cultivate &rarr;'.html_safe, 'http://cultivateHQ.com'
     #container
       - if notice.present?
         %p.notice= notice
