@@ -36,14 +36,12 @@ gem 'devise', '~> 1.1.7'
 
 group :development do
   gem 'fabrication', '~> 0.9.5'
-  gem 'rspec-rails', '~> 2.0.0.beta.19'
+  gem 'rspec-rails', '~> 2.0'
 end
 
 group :test do
   gem 'fabrication', '~> 0.9.5'
   gem 'webrat', '~> 0.7.3'
-  gem 'rspec',       '~> 2.0.0.beta.19'
-  gem 'rspec-rails', '~> 2.0.0.beta.19'
   gem 'flexmock', '~> 0.9.0'
 end
 
